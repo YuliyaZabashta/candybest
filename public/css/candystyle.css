@@ -1117,7 +1117,6 @@ ul.contacts li a{
 }
 
 
-
 /* ---------------- КОНЕЦ стилей для страниы с открытым товаром -------------------------- */
 /*---Корзина---*/
 .cart{
@@ -1650,8 +1649,8 @@ span.simpleCart_total {
 
 /* стили для корневого элемента слайдера */
 .itcss {
-width: 100%;
-padding: 0;
+    width: 100%;
+    padding: 0;
 }
     
 /* стили для wrapper */
@@ -1711,9 +1710,8 @@ padding: 0;
 .itcss__control {
     position: absolute;
     top: 50%;
-    width: 35px;
-    height: 35px;
-    padding: 3px;
+    width: 40px;
+    height: 40px;
     transform: translateY(-50%);
     display: none;
     align-items: center;
@@ -1748,22 +1746,32 @@ padding: 0;
     content: '';
     display: inline-block;
     width: 25px;
-    height: 25px;
+    height: 30px;
+    padding:5px;
     background: transparent no-repeat center center;
     background-size: 100% 100%;
 }
     
 .itcss__control_prev::before, .itcss__control_next::before {
     background: url("/imagescandy/goods/arrowBg.png") no-repeat;
+    background-size: cover;
 }
     
 .itcss__control_next::before {
     transform: scale(-1, 1)
 }
 @media(max-width:992px){
-.itcss__control, .itcss__control::before {
-    width: 60px;
+.itcss__control {
+    width: 80px;
+    height: 80px;
+    }
+}
+@media(max-width:992px){
+.itcss__control::before {
+    width: 50px;
     height: 60px;
+    padding:10px;
+    opacity: 0.1;
     }
 }
     
@@ -1874,6 +1882,7 @@ padding: 0;
 }
 
 #pop-up {
+    font-family: Huntsman, sans-serif;
     position: absolute; 
     top: 2%;
     left: 2%;
@@ -1894,7 +1903,6 @@ padding: 0;
   #pop-up button {
     position: absolute;
     right: 42%;
-    top: 87%;
     padding: 15px;
     border-radius: 10px;
     border: 1px solid #22222000;
@@ -1998,4 +2006,3 @@ padding: 0;
     visibility: visible;
     left: 0;
   }
-

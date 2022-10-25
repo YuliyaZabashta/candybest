@@ -1,12 +1,11 @@
 /*Cart*/
 $('body').on('click','.add-to-cart-link', function(e){
     //e.preventDefault();
-    var id = $(this).data('id'),
-    qty = $('.quantity input').val() ? $('.quantity input').val():1,
-    mod = $('.available select').val();
+    let id = $(this).data('id'),
+    qty = $('.quantity input').val() ? $('.quantity input').val():1
     $.ajax({
         url: '/cart/add',
-        data:  {id:id, qty:qty, mod:mod},
+        data:  {id, qty},
         type: 'GET',
         error: function(){
             alert('Ошибка! Попробуйте позже');
@@ -15,10 +14,10 @@ $('body').on('click','.add-to-cart-link', function(e){
 });
 
 $('#cart .modal-body').on('click', '.del-item', function(){
-    var id = $(this).data('id');
+    let id = $(this).data('id');
     $.ajax({
         url: '/cart/delete',
-        data: {id: id},
+        data: {id},
         type: 'GET',
         success: function(res){
             showCart(res);
@@ -30,10 +29,10 @@ $('#cart .modal-body').on('click', '.del-item', function(){
 });
 
 $('body').on('click','.minus-to-cart-link', function(e){
-    var id = $(this).data('id');
+    let id = $(this).data('id');
     $.ajax({
         url: '/cart/minus',
-        data:  {id:id},
+        data:  {id},
         type: 'GET',
         error: function(){
             alert('Ошибка! Попробуйте позже');
@@ -91,41 +90,42 @@ function clearCart(){
 }
 /*Cart*/
 
-    const animItems = document.querySelectorAll('._anim-items');
+const animItems = document.querySelectorAll('._anim-items');
 
-    if(animItems.length>0){
-        window.addEventListener('scroll', animOnScroll);
-        function animOnScroll(){
-            for(let index = 0; index < animItems.length; index++){
-                const animItem = animItems[index];
-                const animItemHeight = animItem.offsetHeight;
-                const animItemOffset = offset(animItem).top;
-                const animStart = 4;
+if(animItems.length>0){
+    window.addEventListener('scroll', animOnScroll);
+    function animOnScroll(){
+        for(let index = 0; index < animItems.length; index++){
+            const animItem = animItems[index];
+            const animItemHeight = animItem.offsetHeight;
+            const animItemOffset = offset(animItem).top;
+            const animStart = 4;
                 
-                let animItemPoint = window.innerHeight - animItemHeight / animStart;
-                if(animItemHeight > window.innerHeight){
-                    animItemPoint = window.innerHeight - window.innerHeight / animStart;
-                }
+            let animItemPoint = window.innerHeight - animItemHeight / animStart;
+            if(animItemHeight > window.innerHeight){
+                animItemPoint = window.innerHeight - window.innerHeight / animStart;
+            }
 
-                if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)){
-                    animItem.classList.add('_active');
-                }else{
-                    if(!animItem.classList.contains('_anim-no-hide')){
-                        animItem.classList.remove('_active');
-                    }
+            if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)){
+                animItem.classList.add('_active');
+            }else{
+                if(!animItem.classList.contains('_anim-no-hide')){
+                    animItem.classList.remove('_active');
                 }
             }
         }
-        function offset(el){
-            const rect = el.getBoundingClientRect(),
-                scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-                scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            return{top: rect.top + scrollTop, left: rect.left + scrollLeft}
-        }
-        setTimeout(() =>{
-            animOnScroll();
-        },300); 
     }
+    function offset(el){
+        const rect = el.getBoundingClientRect(),
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            return{top: rect.top + scrollTop, left: rect.left + scrollLeft
+        }
+    }
+    setTimeout(() =>{
+        animOnScroll();
+    },300); 
+}
 
 /*Search*/
 var products = new Bloodhound({
@@ -156,7 +156,7 @@ $('#typeahead').bind('typeahead:select',function(ev,suggestion){
 
 /*Search*/
 
-var popup = document.getElementById('pop-up');
+const popup = document.getElementById('pop-up');
 
 function popYes() {
   sessionStorage.setItem('popup', 'none');
@@ -168,9 +168,7 @@ if(sessionStorage.getItem('popup') || !window.sessionStorage) {
 }else{
   if(window.stop !== undefined) {
     window.stop();
-  } else if (document.execCommand !== undefined) {
-    document.execCommand("Stop", false);
-  }
+  } 
 }
 
 
