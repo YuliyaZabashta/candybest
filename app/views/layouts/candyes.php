@@ -4,7 +4,6 @@
     <base href="/">
     <meta charset="UTF-8">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" href="/css/style1.css">
     <link rel="stylesheet" href="/css/candystyle.css">
     <link rel="icon" type="image/png" sizes="512x512" href="/imagescandy/favicon.png">
     <?=$this->getMeta();?>
