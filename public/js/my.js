@@ -30,9 +30,10 @@ $('#cart .modal-body').on('click', '.del-item', function(){
 
 $('body').on('click','.minus-to-cart-link', function(e){
     let id = $(this).data('id');
+    qty = 1;
     $.ajax({
         url: '/cart/minus',
-        data:  {id},
+        data:  {id, qty},
         type: 'GET',
         error: function(){
             alert('Ошибка! Попробуйте позже');
