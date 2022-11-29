@@ -39,17 +39,17 @@ class Cart extends AppModel{
         $_SESSION['cart.sum'] -= $sumMinus;
         unset($_SESSION['cart'][$id]);
     }
-    public function minusItem($id, $qty = 1){
-        $minusQty = $_SESSION['cart'][$id]['qty']-($qty/2);
+    public function minusItem($id, $qty){
+        $minusQty = $_SESSION['cart'][$id]['qty'] - $qty;
         $_SESSION['cart'][$id]['qty'] = $minusQty;
         if($_SESSION['cart'][$id]['qty']<=0){
             unset($_SESSION['cart'][$id]);
         }
-        $_SESSION['cart.qty'] = $_SESSION['cart.qty'] - ($qty/2);
+        $_SESSION['cart.qty'] = $_SESSION['cart.qty'] - $qty;
         if($_SESSION['cart.qty']<=0){
             unset($_SESSION['cart.qty']);
         }
-        $minusSum = $_SESSION['cart.sum'] - ($_SESSION['cart'][$id]['price'] * $qty/2);
+        $minusSum = $_SESSION['cart.sum'] - ($_SESSION['cart'][$id]['price'] * $qty);
         $_SESSION['cart.sum'] = $minusSum;
     }
 
