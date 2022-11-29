@@ -26,8 +26,9 @@ class CartController extends AppController{
 
     public function minusAction(){
         $id = !empty($_GET['id']) ? (int)$_GET['id'] :null;
+        $qty = !empty($_GET['qty']) ? (int)$_GET['qty'] :null;
         $cart = new Cart();
-        $cart->minusItem($id, $qty=1);
+        $cart->minusItem($id, $qty);
         if($this->isAjax()){
             $this->loadView('cart_modal');
         }
